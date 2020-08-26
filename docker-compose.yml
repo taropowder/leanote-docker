@@ -1,0 +1,18 @@
+version: "2.0"
+
+services:
+  leanote:
+    image: ubuntu:16.04
+    volumes:
+      - ./leanote/leanote:/leanote
+    container_name: leanote_service
+    command: "bash -c 'chmod +x /leanote/bin/run.sh && /leanote/bin/run.sh'"
+    ports:
+      - 9000:9000
+
+
+  mongo:
+    image: mongo:latest
+    container_name: leanote_mongo
+    volumes:
+      - ./data:/data/db
